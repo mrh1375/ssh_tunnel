@@ -1,0 +1,19 @@
+با استفاده از Putty به VPS خود متصل شوید.
+
+۱. certbot را نصب کنید.
+
+sudo apt install software-properties-common
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt-get install certbot
+۲. از certbot برای دریافت گواهی SSL استفاده کنید. از آدرس ایمیل و نام دامنه خود استفاده کنید.
+
+sudo certbot certonly --standalone --preferred-challenges http --agree-tos --email your-email-address -d test.example.com 
+۳. اگر درست نصب کرده باشید «Congratulations!..» دریافت کردید، به این معنی است که اکنون گواهی SSL برای دامنه/زیر دامنه خود دارید.
+
+دو مسیر نصب شامل گواهینامه و کلید به شما داده می شود آنها را کپی کنید، زیرا در پنل وب باید آنها را مسیردهی کنید چیزی شبیه این خواهد بود:
+
+/etc/letsencrypt/live/test.example.com/fullchain.pem
+/etc/letsencrypt/live/test.example.com/privkey.pem
+۴. در آخر، گواهی SSL در ۹۰ روز منقضی می شود، دستور تمدید دستی را به موقع اجرا کنید:
+
+certbot renew --force-renewal
